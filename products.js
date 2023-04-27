@@ -63,7 +63,7 @@ class ProductManager {
           await fs.promises.writeFile(this.path, dataJson);
           console.log(`- Add Product (${product.id}):`);
           console.log(`The product has been added`);
-          return `The product has been added`;
+          return product;
         } else {
           console.log("- Add Product:");
           console.log(
