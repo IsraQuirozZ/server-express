@@ -104,3 +104,21 @@ server.put("/products/:pid", (req, res) => {
   // En este caso no necesito esperar la actualización debido a que los datos de la act, no se utilizan
   // para operar o enviar al cliente a la respuesta
 });
+
+// Borrar producto
+server.delete("/products/:pid", (req, res) => {
+  let id = Number(req.params.pid);
+  console.log(req.params);
+  manager.deleteProduct(id);
+  if (req.params.pid) {
+    return res.json({
+      status: 200,
+      message: "deleted",
+    });
+  } else {
+    return res.json({
+      success: 400,
+      message: "not found product to delete",
+    });
+  }
+});

@@ -16,14 +16,5 @@
     "code": "abc124",
     "stock": 25,
     "id": 2
-  },
-  {
-    "title": "Producto 3",
-    "description": "Descripción",
-    "price": 200,
-    "thumbnail": "Sin imagen",
-    "code": "abc125",
-    "stock": 25,
-    "id": 3
   }
 ]
