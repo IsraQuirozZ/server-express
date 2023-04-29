@@ -154,36 +154,5 @@ class ProductManager {
 }
 
 let manager = new ProductManager("./data/products.json");
-async function manage() {
-  await manager.addProduct({
-    title: "Producto 1",
-    description: "Este es un producto prueba",
-    price: 200,
-    thumbnail: "Sin imagen",
-    code: "abc123",
-    stock: 25,
-  });
-  await manager.addProduct({
-    title: "Producto 2",
-    description: "Este es un producto prueba",
-    price: 220,
-    thumbnail: "Sin imagen",
-    code: "abc124",
-    stock: 25,
-  });
-  await manager.addProduct({
-    title: "Producto 3",
-    description: "Este es un producto prueba",
-    price: 230,
-    thumbnail: "Sin imagen",
-    code: "abc125",
-    stock: 25,
-  });
-  await manager.getProductById(1); // Objeto anterior
-  await manager.getProductById(4); // Error (no existe el producto con id 4)
-  await manager.updateProduct(3, { title: "Producto 3 actualizado" }); // Actualizará el producto con id 3
-  await manager.deleteProduct(3); // Se eliminará el producto y el archivo JSON quedará con producto 1 y 2
-}
 
-// manage();
 export default manager;
