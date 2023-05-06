@@ -1,0 +1,23 @@
+{{#if lastName}}
+  <h2>Hola {{name}} {{lastName}}</h2>
+{{else}}
+  <h2>Hola {{name}}</h2>
+{{/if}}
+
+<div class="d-flex justify-content-evenly">
+  {{#each alumnos}}
+    <div class="card" style="width: 18rem;">
+      <img
+        src={{this.photo}}
+        class="card-img-top"
+        style="height: 8rem;"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{this.name}}</h5>
+        <p class="card-text">Alumno de backend</p>
+        <a href="#" class="btn btn-primary">+ info</a>
+      </div>
+    </div>
+  {{/each}}
+</div>
