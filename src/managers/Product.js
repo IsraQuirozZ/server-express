@@ -153,6 +153,6 @@ class ProductManager {
   }
 }
 
-let manager = new ProductManager("./data/products.json");
+let manager = new ProductManager("./src/data/products.json");
 
 export default manager;
