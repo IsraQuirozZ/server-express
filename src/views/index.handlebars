@@ -1,22 +1,21 @@
-{{#if lastName}}
-  <h2>Hola {{name}} {{lastName}}</h2>
+<h3>HOLA {{name}}</h3>
+{{#if last_name}}
+  <h2>{{last_name}}</h2>
 {{else}}
-  <h2>Hola {{name}}</h2>
+  <h2>aca deberia haber un apellido, si existe</h2>
 {{/if}}
-
 <div class="d-flex justify-content-evenly">
   {{#each alumnos}}
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 15rem">
       <img
         src={{this.photo}}
         class="card-img-top"
-        style="height: 8rem;"
-        alt="..."
+        style="width: 15rem;height:8rem"
       />
       <div class="card-body">
         <h5 class="card-title">{{this.name}}</h5>
-        <p class="card-text">Alumno de backend</p>
-        <a href="#" class="btn btn-primary">+ info</a>
+        <p class="card-text">Alumno de backend.</p>
+        <button class="emit_data" class="btn btn-primary">+Info</button>
       </div>
     </div>
   {{/each}}
