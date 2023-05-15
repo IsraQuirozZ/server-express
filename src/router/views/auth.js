@@ -1,13 +1,13 @@
 import { Router } from "express";
 
-const auth_router = Router();
+const router = Router();
 
-auth_router.get("/register", async (req, res, next) => {
+router.get("/register", async (req, res, next) => {
   try {
     return res.render("register", { title: "auth form" });
   } catch (error) {
-    next();
+    next(error);
   }
 });
 
-export default auth_router;
+export default router;

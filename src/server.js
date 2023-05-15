@@ -1,29 +1,39 @@
-import server from "./app.js";
-import { Server } from "socket.io";
+import express from "express";
+import router from "./router/index.js";
+import errorHandler from "./middlewares/errorHandler.js";
+import notFoundHandler from "./middlewares/notFoundHandler.js";
+import { engine } from "express-handlebars";
+import { __dirname } from "./utils.js";
+
+let server = express();
 
 const PORT = 8080;
 const ready = () => console.log("server ready on port " + PORT);
 
-let http_server = server.listen(PORT, ready);
-let socket_server = new Server(http_server);
+//inicializamos el motor de plantillas indicando dos parámetros:
+//el tipo de motor
+//instanciar el motor
+server.engine("handlebars", engine());
+//configuramos el motor instanciado
+//de esta manera el servidor sabe que tiene que renderizar
+//plantillas de handlebars
+server.set("view engine", "handlebars");
+//configuramos donde van a estar las plantillas
+//se recomienda el uso de rutas absolutas con __dirname
+server.set("views", __dirname + "/views");
 
-let contador = 0;
-socket_server.on(
-  // on sirve para escuchar los msj que llegan del cliente
-  "connection", // Identificador del mensaje a escuchar
-  (socket) => {
-    // callback que se ejecuta cuando se conecta un cliente
-    // console.log(socket);
-    console.log(`client ${socket.client.id} connected`);
-    socket.on("primer conexión", (data) => {
-      console.log(data.name);
-      contador++;
-      socket_server.emit("contador", { contador });
-    });
-  }
-);
+server.use(express.urlencoded({ extended: true }));
+//para que reciba datos complejos desde la url (clase 6)
+server.use(express.json());
+//para interpretar mensajes de tipo JSON (clase 7)
+server.use("/public", express.static("public"));
+//para configurar la carpeta public (clase 8)
+server.use("/", router); //enrutador principal
+server.use(errorHandler); //manejador de errores
+server.use(notFoundHandler); //manejador de rutas inexistentes
 
-// PRODUCTS
+server.listen(PORT, ready);
+
 // let index_route = "/";
 // let index_function = (req, res) => {
 //   let quantity = manager.getProducts().length;
