@@ -1,4 +1,5 @@
 import "dotenv/config.js";
+import { connect } from "mongoose";
 import express from "express";
 import router from "./router/index.js";
 import error_handler from "./middlewares/errorHandler.js";
@@ -20,5 +21,12 @@ server.use(express.urlencoded({ extended: true }));
 server.use("/", router);
 server.use(error_handler);
 server.use(not_found_handler);
+
+//database
+connect(
+  "mongodb+srv://admin-Isra:admin-Isra@cluster0.cpaxw.mongodb.net/testCommerce"
+) // Link de conexión (URI)
+  .then(() => console.log("database connected"))
+  .catch((err) => console.log(err));
 
 export default server;
