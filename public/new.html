@@ -10,13 +10,13 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/public/styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
     <title>FORM</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm bg-danger">
+    <nav class="navbar navbar-expand-sm bg-warning">
       <div class="container-fluid">
-        <a class="navbar-brand text-light" href="#">Home</a>
+        <a class="navbar-brand" href="/index.html">HOME</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -31,10 +31,21 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link text-light" href="#">Products</a>
+              <a class="nav-link" href="/products.html">PRODUCTS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="#">Chat</a>
+              <a class="nav-link" href="#">NEW PRODUCT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register.html">REGISTER</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login.html">LOGIN</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="quantity" href="/cart.html?cid=1"
+                >CART: 0</a
+              >
             </li>
           </ul>
         </div>
@@ -45,7 +56,7 @@
         <div class="row">
           <div class="col-6 d-flex flex-column">
             <h3>Product register</h3>
-            <form id="productsForm" action="/new-product" , method="POST">
+            <form id="productsForm">
               <fieldset class="mb-2">
                 <label for="productTitle" class="form-label">Title</label>
                 <input
@@ -73,6 +84,16 @@
                   class="form-control"
                   name="price"
                   id="productPrice"
+                />
+              </fieldset>
+              </fieldset>
+              <fieldset class="mb-2">
+                <label for="code" class="form-label">Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="code"
+                  id="code"
                 />
               </fieldset>
               <fieldset class="mb-2">
@@ -110,4 +131,6 @@
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"
   ></script>
+  <script src="/scripts/new.js"></script>
+  <script src="/scripts/cart_icon.js"></script>
 </html>
