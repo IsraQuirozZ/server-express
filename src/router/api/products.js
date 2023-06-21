@@ -1,9 +1,10 @@
 import { Router } from "express";
 import manager from "./../../managers/Product.js";
+import auth from "../../middlewares/auth.js";
 
 const router = Router();
 
-router.post("/", async (req, res, next) => {
+router.post("/", auth, async (req, res, next) => {
   try {
     let response = await manager.add_product(req.body);
     if (response === 201) {
@@ -14,6 +15,7 @@ router.post("/", async (req, res, next) => {
     next(error);
   }
 });
+
 router.get("/", async (req, res, next) => {
   try {
     let products = manager.read_products();
